@@ -99,7 +99,7 @@ section{
     background-color: hsl(235, 19%, 35%);
 
 }
-.todo-wrapper .cross{
+ .cross{
     display: none;
 }
 
@@ -135,18 +135,23 @@ section{
 
 
 /*adding the general styling for p inside todo-box*/
+.task{
+    width: 100%;
+    position: relative;
+}
 .task:hover {
     cursor: pointer;
 
 }
-.task:hover +.cross{
-    display: block;
+.task:hover .cross{
+    display: inline;
     position: absolute;
     right: 0.8rem;
 }
 /*the completed state styling for p inside todo-box**/
 .completed-task{
     text-decoration-line: line-through;
+    color:hsl(236, 9%, 61%) ;
 }
 
 
