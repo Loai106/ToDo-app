@@ -40,10 +40,10 @@
       <div class="todo-box todo-wrapper">
         <div class="check-circle circle-notChecked added-circle"></div>
         <div class="task added-task">Clean your room 
-          <span class="cross">
+          <div class="cross">
           <svg id="delete-task" class=xmlns="http://www.w3.org/2000/svg" width="18" height="18">
           <path fill="hsl(236, 9%, 61%)" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg>
-          </span>
+          </div>
         </div>
           
       </div>
@@ -51,9 +51,9 @@
       <div class="footer">
         <div class="footer-item"><span class="items-num">0</span> items left</div>
         <div class="selecting-item">
-          <div class="footer-item all">All</div>
-          <div class="footer-item active">Active</div>
-          <div class="footer-item completed">Completed</div>
+          <span class="footer-item option all" onclick="styleClicked(this)" >All</span>
+          <span class="footer-item option active" onclick="callActiveFuncions(this)">Active</span>
+          <span class="footer-item option completed" onclick="callCompletedFuncions(this)">Completed</span>
         </div>
 
         <div class="footer-item clear">Clear Completed</div> 

@@ -191,3 +191,8 @@ section{
     transition: all 0.3s ease;
 
 }
+.footer-item-clicked{
+    color:hsl(220, 98%, 61%);
+    cursor: pointer;
+
+}

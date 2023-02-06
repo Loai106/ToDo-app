@@ -63,7 +63,72 @@ document.addEventListener('click',e=>{
         parentNode.parentNode.removeChild(parentNode);
     }
     
-        
-
-
 });
+
+//adding stylie to the clicked item and remove the styling from other options
+function styleClicked(ele)
+{
+    document.querySelectorAll('.option').forEach(option=>{
+        if(option.classList.contains('footer-item-clicked'))
+        {
+            option.classList.remove('footer-item-clicked');
+        }
+    })
+
+    ele.classList.toggle('footer-item-clicked');
+
+}
+
+//showing just the active element 
+function showActive()
+{
+
+    const tasks = document.querySelectorAll('.task');
+    tasks.forEach(task=>{
+        if(task.classList.contains('completed-task'))
+        {
+            const parentNode = task.parentNode;
+            parentNode.style.display  = 'none';
+        }
+        else{ 
+            const parentNode = task.parentNode;
+            parentNode.style.display  = "block";
+        }
+
+    });
+}
+
+
+//showing just the completed element 
+function showCompleted()
+{
+
+    const tasks = document.querySelectorAll('.task');
+    tasks.forEach(task=>{
+        if(!task.classList.contains('completed-task'))
+        {
+            const parentNode = task.parentNode;
+            parentNode.style.display  = 'none';
+        }
+        else{ 
+            const parentNode = task.parentNode;
+            parentNode.style.display  = 'block';
+
+        }
+
+    });
+}
+
+//calling the functions with active buttons
+function callActiveFuncions(ele)
+{
+    styleClicked(ele);
+    showActive();
+}
+
+//calling the functions with active buttons
+function callCompletedFuncions(ele)
+{
+    styleClicked(ele);
+    showCompleted();
+}
