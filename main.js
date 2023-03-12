@@ -7,7 +7,7 @@ function addTask(task)
 {
     let htmlSentence = ` <div class="todo-box todo-wrapper">
     <div class="check-circle circle-notChecked added-circle"></div>
-    <div class="task added-task">${task}
+    <div class="task active-task added-task">${task}
       <span class="cross">
       <svg id="delete-task" class=xmlns="http://www.w3.org/2000/svg" width="18" height="18">
       <path fill="hsl(236, 9%, 61%)" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg>
@@ -41,6 +41,7 @@ document.addEventListener('click',e=>{
     {
         const unCheckedCircle = target.previousElementSibling;
         target.classList.toggle("completed-task");
+        target.classList.toggle("active-task")
         unCheckedCircle.classList.toggle("circle-checked");
     }
     else if(target.classList.contains("added-circle")){
@@ -48,6 +49,8 @@ document.addEventListener('click',e=>{
         console.log(unCheckedTask);
         target.classList.toggle("circle-checked");
         unCheckedTask.classList.toggle("completed-task");
+        unCheckedTask.classList.toggle("active-task")
+
     }
 });
 
@@ -91,8 +94,10 @@ function showActive()
             parentNode.style.display  = 'none';
         }
         else{ 
+
             const parentNode = task.parentNode;
-            parentNode.style.display  = "block";
+            parentNode.style.display  = 'flex';
+           
         }
 
     });
@@ -112,11 +117,20 @@ function showCompleted()
         }
         else{ 
             const parentNode = task.parentNode;
-            parentNode.style.display  = 'block';
+            parentNode.style.display  = 'flex';
 
         }
 
     });
+}
+
+function showAll()
+{
+    const tasks = document.querySelectorAll('.task');
+    tasks.forEach(task=>{
+        const parentNode = task.parentNode;
+        parentNode.style.display  = 'flex';
+        })
 }
 
 //calling the functions with active buttons
@@ -132,3 +146,31 @@ function callCompletedFuncions(ele)
     styleClicked(ele);
     showCompleted();
 }
+
+function callAllFunctions(ele)
+{
+    styleClicked(ele);
+    showAll();
+}
+
+
+//counting the active tasks
+let activeItems = document.querySelectorAll('.active-task');
+
+function countItems()
+{
+    let leftItem = document.querySelector('.left-items');
+    //counting the active tasks
+    let activeTasksNum = activeItems.length;
+
+    if(activeTasksNum >1)
+    {
+        leftItem.innerHTML =`${activeTasksNum} items left`
+    }
+    else{
+        leftItem.innerHTML =`${activeTasksNum} item left`
+    }
+    
+}
+
+countItems();
